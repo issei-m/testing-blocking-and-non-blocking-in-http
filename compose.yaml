@@ -1,0 +1,35 @@
+services:
+  rust:
+    build:
+      context: ./rust
+      additional_contexts:
+        - messense/rust-musl-cross:amd64-musl=docker-image://messense/rust-musl-cross:x86_64-musl
+        - messense/rust-musl-cross:arm64-musl=docker-image://messense/rust-musl-cross:aarch64-musl
+
+  php:
+    build:
+      context: ./php
+    # volumes:
+    #   - ./php/public:/opt/app/public
+
+  ruby:
+    build:
+      context: ./ruby
+    # volumes:
+    #   - ./ruby:/opt/app
+
+  python:
+    build:
+      context: ./python
+    # volumes:
+    #   - ./python:/opt/app
+
+  go:
+    build:
+      context: ./go
+
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "8888:80"
