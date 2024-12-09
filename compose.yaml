@@ -1,0 +1,26 @@
+services:
+  php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    volumes:
+      - ./php/public:/var/www/html/public
+
+  python:
+    build:
+      context: ./python
+      dockerfile: Dockerfile
+    volumes:
+      - ./python:/var/www/html
+
+  go:
+    build:
+      context: ./go
+      dockerfile: Dockerfile
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8888:80"
